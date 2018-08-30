@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/mygradent4"
+    >
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <AutoCompleteTextView
+                android:id="@+id/SearchText"
+                android:layout_marginLeft="5dp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:layout_weight="5"
+                android:textColor="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Search By Article or Author Name"
+                />
+            <ImageView
+                android:id="@+id/SearchButton"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_magnifying_glass"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/SearchRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
