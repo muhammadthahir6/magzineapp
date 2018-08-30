@@ -32,14 +32,14 @@ public class Main2Activity extends AppCompatActivity {
     FloatingActionButton ARbtn;
     //the recyclerview
     RecyclerView recyclerView;
-    ImageView Search,Team;
+    ImageView Search,Team,Gifts;
 
      MagPageAdapter magPageAdapter;
    //  RadioGroup CatGrp;
     // RadioButton Cat1,Cat2,Cat3,Cat4;
      LinearLayout MainLayout;
      Bundle bundle;
-     Intent intent,srchIntent,teamIntent,arIntent;
+     Intent intent,srchIntent,teamIntent,arIntent,GiftIntent;
     String jsonList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +67,25 @@ public class Main2Activity extends AppCompatActivity {
         ARbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startActivity(arIntent);
+                try{
+                Toast.makeText(getApplicationContext(),"Loading may Take a while",Toast.LENGTH_LONG).show();
+                startActivity(arIntent);}
+                catch (ActivityNotFoundException e){
+                    Toast.makeText(getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+                    startActivity(GiftIntent);
+                }
             }
         });
         srchIntent=new Intent(Main2Activity.this,SearchActivity.class);
         teamIntent=new Intent(Main2Activity.this,AboutActivity.class);
+        Gifts=findViewById(R.id.extras);
+        GiftIntent=new Intent(Main2Activity.this,ExtrasActivity.class);
+        Gifts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(GiftIntent);
+            }
+        });
         Search=findViewById(R.id.Search);
         Team=findViewById(R.id.team);
         Search.setOnClickListener(new View.OnClickListener() {
@@ -105,12 +118,9 @@ public class Main2Activity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 magPage=MagPageList.get(position);
                intent.putExtra("i",magPage.getArtId());
-                    try {
-                        startActivity(intent);
-                    }
-                catch (ActivityNotFoundException e){
 
-                }
+                        startActivity(intent);
+
             }
 
             @Override
