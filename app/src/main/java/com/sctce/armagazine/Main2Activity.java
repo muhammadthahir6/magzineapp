@@ -29,10 +29,9 @@ public class Main2Activity extends AppCompatActivity {
     //a list to store all the pages
     List<MagPage> MagPageList=new ArrayList<>();
     MagPage magPage;
-    FloatingActionButton ARbtn;
     //the recyclerview
     RecyclerView recyclerView;
-    ImageView Search,Team,Gifts;
+    ImageView Search,Team,Gifts,ARbtn;
 
      MagPageAdapter magPageAdapter;
    //  RadioGroup CatGrp;
@@ -68,10 +67,11 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                Toast.makeText(getApplicationContext(),"Loading may Take a while",Toast.LENGTH_LONG).show();
-                startActivity(arIntent);}
+                    startActivity(arIntent);
+                    Toast.makeText(getApplicationContext(),"Loading may Take a while",Toast.LENGTH_LONG).show();
+                }
                 catch (ActivityNotFoundException e){
-                    Toast.makeText(getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "AR Module Not Installed", Toast.LENGTH_LONG).show();
                     startActivity(GiftIntent);
                 }
             }
