@@ -51,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:maxLines="3"
+                    android:maxWidth="250dip"
                     android:layout_margin="15dp"
                     android:fontFamily="@font/ubuntu"
                     android:paddingBottom="40dp"
