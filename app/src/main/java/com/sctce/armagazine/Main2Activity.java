@@ -209,6 +209,8 @@ public class Main2Activity extends AppCompatActivity {
     }
     public void open(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setIcon(getResources().getDrawable(R.drawable.fltbtn));
+        alertDialogBuilder.setTitle("SCT Magazine 2018");
         alertDialogBuilder.setMessage("I Have a Hard Copy of Magazine or e-Magazine for Scanning with AR Camera");
                 alertDialogBuilder.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
