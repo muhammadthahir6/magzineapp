@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingTop="20dp"
+        android:gravity="center"
         >
         <android.support.v7.widget.CardView
             android:id="@+id/playstoreAr"

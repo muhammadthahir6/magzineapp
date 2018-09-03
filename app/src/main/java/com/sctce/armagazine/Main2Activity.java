@@ -2,9 +2,11 @@ package com.sctce.armagazine;
 
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 //import android.view.MotionEvent;
 import android.view.View;
 //import android.widget.AdapterView;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 //import android.widget.RadioButton;
@@ -25,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main2Activity extends AppCompatActivity {
+
+
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
 
     //a list to store all the pages
     List<MagPage> MagPageList=new ArrayList<>();
@@ -66,14 +72,12 @@ public class Main2Activity extends AppCompatActivity {
         ARbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    startActivity(arIntent);
-                    Toast.makeText(getApplicationContext(),"Loading may Take a while",Toast.LENGTH_LONG).show();
-                }
-                catch (ActivityNotFoundException e){
-                    Toast.makeText(getApplicationContext(), "AR Module Not Installed", Toast.LENGTH_LONG).show();
-                    startActivity(GiftIntent);
-                }
+
+                    view.startAnimation(buttonClick);
+                    open();
+
+
+
             }
         });
         srchIntent=new Intent(Main2Activity.this,SearchActivity.class);
@@ -83,20 +87,24 @@ public class Main2Activity extends AppCompatActivity {
         Gifts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 startActivity(GiftIntent);
             }
+
         });
         Search=findViewById(R.id.Search);
         Team=findViewById(R.id.team);
         Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 startActivity(srchIntent);
             }
         });
         Team.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClick);
                 startActivity(teamIntent);
             }
         });
@@ -198,5 +206,34 @@ public class Main2Activity extends AppCompatActivity {
                 doubleBackToExitPressedOnce=false;
             }
         }, 2000);
+    }
+    public void open(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("I Have a Hard Copy of Magazine or e-Magazine for Scanning with AR Camera");
+                alertDialogBuilder.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                try {
+                                    startActivity(arIntent);
+                                    Toast.makeText(getApplicationContext(), "Loading may Take a while", Toast.LENGTH_LONG).show();
+                                }
+                                catch (ActivityNotFoundException e){
+                                    Toast.makeText(getApplicationContext(), "AR Module Not Installed", Toast.LENGTH_LONG).show();
+                                    startActivity(GiftIntent);
+                                }
+
+                            }
+                        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(GiftIntent);
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
