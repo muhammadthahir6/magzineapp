@@ -219,6 +219,7 @@ public class Main2Activity extends AppCompatActivity {
                                 try {
                                     startActivity(arIntent);
                                     Toast.makeText(getApplicationContext(), "Loading may Take a while", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Please Wait..", Toast.LENGTH_LONG).show();
                                 }
                                 catch (ActivityNotFoundException e){
                                     Toast.makeText(getApplicationContext(), "AR Module Not Installed", Toast.LENGTH_LONG).show();
