@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -44,7 +46,7 @@ public class SearchActivity extends AppCompatActivity {
         databaseAccess.close();
 
         adapter2= new Adapter2(getApplicationContext(), MagPageList);
-        RecyclerView.LayoutManager manager=new GridLayoutManager(this,3);
+        RecyclerView.LayoutManager manager=new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
         SearchRecyler.setLayoutManager(manager);
         SearchRecyler.setAdapter(adapter2);
 
@@ -104,21 +106,27 @@ public class SearchActivity extends AppCompatActivity {
             Toast.makeText(SearchActivity.this,"Enter Search Word",Toast.LENGTH_SHORT).show();
         }
         else{
+
             word=SrchTxt.getText().toString();
             DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
             databaseAccess.open();
+            if(word.contains("'")){
+                word=word.substring(0,word.indexOf("'"))+"'"+word.substring(word.indexOf("'"),word.length());
+            }
+
             MagPageList= databaseAccess.searchMagData(word);
             databaseAccess.close();
 
             if (MagPageList.size()>0){
+                SrchTxt.onEditorAction(EditorInfo.IME_ACTION_DONE);
                 adapter2= new Adapter2(getApplicationContext(), MagPageList);
-                RecyclerView.LayoutManager manager=new GridLayoutManager(getApplicationContext(),3);
+                RecyclerView.LayoutManager manager=new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
                 SearchRecyler.setLayoutManager(manager);
                 SearchRecyler.setAdapter(adapter2);
             }
             else {
                 adapter2 = new Adapter2(getApplicationContext(), MagPageList);
-                RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(), 3);
+                RecyclerView.LayoutManager manager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
                 SearchRecyler.setLayoutManager(manager);
                 SearchRecyler.setAdapter(adapter2);
                 Toast.makeText(SearchActivity.this, "Found Nothing", Toast.LENGTH_SHORT).show();
