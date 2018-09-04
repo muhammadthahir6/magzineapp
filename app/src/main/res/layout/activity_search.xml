@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity"
     android:fitsSystemWindows="true"
-    android:background="@color/white"
+    android:background="@color/darktheme"
     >
 
     <LinearLayout
@@ -28,10 +28,11 @@
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:layout_weight="5"
-                android:textColor="@color/black"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/white"
                 android:hint="Search By Article or Author Name"
                 />
             <ImageView
@@ -39,7 +40,6 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:tint="@color/blacktrans"
                 android:src="@drawable/ic_magnifying_glass"
                 />
         </LinearLayout>

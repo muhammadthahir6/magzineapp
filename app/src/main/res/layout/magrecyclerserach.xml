@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-
     >
 
 
         <LinearLayout
+            android:layout_marginTop="3dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -47,32 +47,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="12dp"
                     >
 
                     <TextView
                         android:id="@+id/articleText"
-                        android:gravity="center"
+                        android:gravity="start"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Article"
                         android:maxLines="2"
                         android:ellipsize="end"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
                         android:fontFamily="@font/ubuntu"
                         android:textStyle="bold"
                         />
                     <TextView
                         android:id="@+id/authorText"
-                        android:gravity="center"
+                        android:gravity="start"
                         android:layout_margin="2dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Author"
                         android:maxLines="1"
                         android:ellipsize="end"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="17sp"
                         android:fontFamily="@font/ubuntu"
                         />

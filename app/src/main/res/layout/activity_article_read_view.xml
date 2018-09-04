@@ -75,12 +75,20 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:src="@drawable/prosq"
-                    android:layout_gravity="bottom|right"
+                    android:layout_gravity="bottom|end"
                     android:layout_margin="25dp"
 
                     />
             </FrameLayout>
 
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:layout_collapseMode="pin"
+
+                >
+
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
