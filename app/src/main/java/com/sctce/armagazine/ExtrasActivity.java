@@ -37,7 +37,7 @@ public class ExtrasActivity extends AppCompatActivity {
         eMag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("http://sctcemagazine.000webhost.com/pdf/magazine.pdf");
+                Uri uri = Uri.parse("http://sctcemagazine.000webhostapp.com/pdf/");
                 Intent intent= new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(intent);
             }

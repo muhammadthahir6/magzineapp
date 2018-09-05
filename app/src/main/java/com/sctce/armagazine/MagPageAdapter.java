@@ -74,8 +74,8 @@ public class MagPageAdapter extends RecyclerView.Adapter<MagPageAdapter.MagPageH
         return MagPageList.size();
     }
     private void setFadeAnimation(View view){
-        AlphaAnimation animation=new AlphaAnimation(0.0f,1.0f);
-        animation.setDuration(1000);
+        AlphaAnimation animation=new AlphaAnimation(0.0f,0.5f);
+        animation.setDuration(500);
         view.startAnimation(animation);
     }
 
